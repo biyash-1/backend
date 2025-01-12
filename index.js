@@ -9,10 +9,14 @@ const bodyParser = require("body-parser")
 const  port = process.env.PORT || 3001
 // Configure CORS
 app.use(cors({
-  origin: 'http://localhost:3000', // Your frontend URL
+  origin: [
+    'http://localhost:3000',  // Local development URL
+    'https://expense-tracker-application-16vn.vercel.app'  // Your hosted frontend URL
+  ],
   methods: 'GET,POST,PUT,DELETE',
   allowedHeaders: 'Content-Type,Authorization',
 }));
+
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
